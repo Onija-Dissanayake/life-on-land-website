@@ -3,34 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 <title>Welcome</title>
-
 <meta http-equiv="refresh" content="4; url=home.html">
 
-
 <style>
-
 body {
-    
     background-image: url("https://media.istockphoto.com/id/2159325850/photo/water-drops-on-green-leaf-purity-nature-background.jpg?s=612x612&w=0&k=20&c=jRxkini4rrGz45wWgcbv4gPa4Vtf8SD5wLrjosP0Ozs=");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-    
     margin: 10px;
     font-family: Arial, sans-serif;
     color: white;
     text-align: center;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
     transition: opacity 0.5s ease;
 }
 
@@ -38,8 +28,9 @@ h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 70px;
     font-weight: 800;
-    color: white;
-    text-shadow: 3px 3px 6px;
+    text-align: center;
+    color: #c7a46a;
+    text-shadow: 4px 4px 15px #000000;
 }
 
 p {
@@ -51,7 +42,6 @@ ul {
     font-size: 25px;
     list-style: none;
 }
-
 
 .loader {
     border: 5px solid #fff;
@@ -76,15 +66,7 @@ button {
     border-radius: 10px;
     cursor: pointer;
 }
-h1{
-    text-align:center;
-    color: #c7a46a;
-    text-shadow: 4px 4px 15px #000000;
-            
-}
-
 </style>
-
 </head>
 
 <body>
@@ -97,55 +79,41 @@ h1{
         <li>Pasindu</li>
         <li>Rusira</li>
         <li>Onija</li>
-
     </ul>
 
-    <div class="loarder"></div>
+    <div class="loader"></div>
 
     <p id="countdown">Entering site in 4...</p>
 
     <button onclick="skip()">Skip Intro</button>
 
     <script>
-    //set starting time for countdown
+    // Starting time for the countdown
     let time = 4;
 
-    //Run function every 1 second
-    let countdown = setInterval(function(){
-
-        time--; //decrease time by 1
-
-        //update countdown text on screen
+    // Run every 1 second
+    let countdown = setInterval(function () {
+        time--;
         document.getElementById("countdown").textContent = "Entering site in " + time + "...";
 
-        //stop timer when it reaches 0
-        if(time === 0){
-    clearInterval(countdown);
+        if (time === 0) {
+            goHome();
+        }
+    }, 1000);
 
-    // fade out effect
-    document.body.style.opacity = "0";
+    // Skip button
+    function skip() {
+        goHome();
+    }
 
-    // wait 0.5s then go to home page
-    setTimeout(function(){
-        window.location.href = "home.html";
-    }, 500);
-}
-
-    },1000);
-    
-    function skip(){
-    clearInterval(countdown);
-
-    document.body.style.opacity = "0";
-
-    setTimeout(function(){
-        window.location.href = "home.html";
-    }, 500);
-}
-
-</script>
-
-
+    // Fade out, then go to the home page
+    function goHome() {
+        clearInterval(countdown);
+        document.body.style.opacity = "0";
+        setTimeout(function () {
+            window.location.href = "home.html";
+        }, 500);
+    }
+    </script>
 </body>
-</html>    
-
+</html>
